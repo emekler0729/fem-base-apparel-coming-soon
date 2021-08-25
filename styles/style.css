@@ -1,8 +1,85 @@
-.attribution {
-  font-size: 11px;
-  text-align: center;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.attribution a {
-  color: #3e52a3;
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  background-image: linear-gradient(135deg, white, #fff5f5);
+}
+
+.navbar__logo {
+  width: 100px;
+  height: auto;
+  margin: 2rem;
+}
+
+.hero__img {
+  width: 100%;
+  height: auto;
+}
+
+.main {
+  text-align: center;
+  margin: 3rem 1.5rem;
+}
+.main__title {
+  color: #413a3a;
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 10px;
+}
+.main__title--accent {
+  font-weight: 300;
+  color: #ce9797;
+}
+.main__text {
+  color: #ce9797;
+  font-weight: 300;
+  margin: 1.5rem 0;
+  line-height: 1.5rem;
+}
+
+.form {
+  position: relative;
+}
+.form__email {
+  background-color: transparent;
+  padding: 1rem;
+  border: 1px solid rgba(65, 58, 58, 0.1);
+  border-radius: 30px;
+  width: 100%;
+  color: #413a3a;
+}
+.form__email::placeholder {
+  color: #ce9797;
+  font-family: "Josefin Sans", sans-serif;
+  opacity: 25%;
+  font-size: 1rem;
+}
+.form__button {
+  color: white;
+  border: 1px solid transparent;
+  background-image: linear-gradient(135deg, #f8bfbf, #ee8c8c);
+  border: 1px solid transparent;
+  border-radius: 30px;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 20%;
+}
+
+footer {
+  margin: 2rem;
+}
+footer .attribution {
+  font-size: 11px;
+  text-align: center;
+  color: #413a3a;
+}
+footer .attribution a {
+  color: #ce9797;
 }

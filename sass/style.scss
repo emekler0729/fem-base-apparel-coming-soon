@@ -2,17 +2,104 @@ $color-desaturated-red: hsl(0, 36%, 70%);
 $color-soft-red: hsl(0, 93%, 68%);
 $color-dark-grayish-red: hsl(0, 6%, 24%);
 
-$gradient-1: linear, 135deg, from hsl(0, 0%, 100%), to hsl(0, 100%, 98%);
-$gradient-2: linear, 135deg, from hsl(0, 80%, 86%), to hsl(0,  74%, 74%);
+$gradient-light: 135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%);
+$gradient-dark: 135deg, hsl(0, 80%, 86%), hsl(0,  74%, 74%);
 
 $font-size: 16px;
 $font-sans-serif: 'Josefin Sans', sans-serif;
 
-.attribution {
-    font-size: 11px;
-    text-align: center;
-  }
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 
-  .attribution a {
-    color: hsl(228, 45%, 44%);
-  }
+body {
+    font-family: $font-sans-serif;
+    font-size: $font-size;
+    background-image: linear-gradient($gradient-light);
+}
+
+.navbar {
+    &__logo {
+        width: 100px;
+        height: auto;
+        margin: 2rem;
+    }
+}
+
+.hero {
+    &__img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.main {
+    text-align: center;
+    margin: 3rem 1.5rem;
+
+    &__title {
+        color: $color-dark-grayish-red;
+        text-transform: uppercase;
+        font-size: 3rem;
+        font-weight: 600;
+        letter-spacing: 10px;
+
+        &--accent {
+            font-weight: 300;
+            color: $color-desaturated-red;
+        }
+    }
+
+    &__text {
+        color: $color-desaturated-red;
+        font-weight: 300;
+        margin: 1.5rem 0;
+        line-height: 1.5rem;
+    }
+}
+
+.form {
+    position: relative; 
+
+    &__email {
+        background-color: transparent;
+        padding: 1rem;
+        border: 1px solid hsla(0, 6%, 24%, 0.1);
+        border-radius: 30px;
+        width: 100%;
+        color: $color-dark-grayish-red;
+
+        &::placeholder {
+            color: $color-desaturated-red;
+            font-family: $font-sans-serif;
+            opacity: 25%;
+            font-size: 1rem;
+        }
+    }
+
+    &__button {
+        color: white;
+        border: 1px solid transparent;
+        background-image: linear-gradient($gradient-dark);
+        border: 1px solid transparent;
+        border-radius: 30px;
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 20%;
+    }
+}
+
+footer {
+    margin: 2rem;
+    .attribution {
+        font-size: 11px;
+        text-align: center;
+        color: $color-dark-grayish-red;
+        a {
+            color: $color-desaturated-red;
+          }
+      }
+}
