@@ -4,19 +4,24 @@
   margin: 0;
 }
 
-body {
-  font-family: "Josefin Sans", sans-serif;
+root {
   font-size: 16px;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Josefin Sans", sans-serif;
   background-image: linear-gradient(135deg, white, #fff5f5);
 }
 
 .navbar__logo {
-  width: 100px;
+  width: 26.6666666667%;
   height: auto;
-  margin: 2rem;
+  margin: 2rem 1.5rem;
 }
 
 .hero__img {
+  display: block;
   width: 100%;
   height: auto;
 }
@@ -55,25 +60,27 @@ body {
   color: #413a3a;
 }
 .form__email::placeholder {
-  color: #ce9797;
+  font-size: 16px;
   font-family: "Josefin Sans", sans-serif;
-  opacity: 25%;
-  font-size: 1rem;
+  color: rgba(206, 151, 151, 0.25);
+}
+.form__email:focus-visible {
+  outline: none;
 }
 .form__button {
-  color: white;
-  border: 1px solid transparent;
-  background-image: linear-gradient(135deg, #f8bfbf, #ee8c8c);
-  border: 1px solid transparent;
-  border-radius: 30px;
   position: absolute;
   right: 0;
   height: 100%;
   width: 20%;
+  border: 1px solid transparent;
+  color: white;
+  background-image: linear-gradient(135deg, #f8bfbf, #ee8c8c);
+  border-radius: 30px;
+  box-shadow: rgba(206, 151, 151, 0.4) 0px 7px 29px 0px;
 }
 
 footer {
-  margin: 2rem;
+  margin: 2rem 1.5rem;
 }
 footer .attribution {
   font-size: 11px;
@@ -82,4 +89,46 @@ footer .attribution {
 }
 footer .attribution a {
   color: #ce9797;
+}
+
+@media (min-width: 1000px) {
+  body {
+    display: grid;
+    grid-template: 100px auto 100px/auto 40% auto 40%;
+    background: url("../images/bg-pattern-desktop.svg");
+  }
+
+  .navbar {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+
+  .hero {
+    grid-column: 4/5;
+    grid-row: 1/4;
+  }
+  .hero__img {
+    max-height: 100vh;
+  }
+
+  .main {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    text-align: left;
+    justify-items: center;
+    width: 70%;
+    margin-top: 8rem;
+  }
+  .main__title {
+    font-size: 4rem;
+    font-weight: 400;
+  }
+
+  footer {
+    grid-column: 2/3;
+    grid-row: 3/4;
+  }
+  footer .attribution {
+    text-align: left;
+  }
 }

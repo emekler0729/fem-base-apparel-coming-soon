@@ -1,6 +1,13 @@
-$color-desaturated-red: hsl(0, 36%, 70%);
-$color-soft-red: hsl(0, 93%, 68%);
-$color-dark-grayish-red: hsl(0, 6%, 24%);
+@use 'sass:list';
+@use 'sass:math';
+
+@function fHSL($hsl, $a: 1) {
+    @return hsl(list.nth($hsl, 1), list.nth($hsl, 2), list.nth($hsl, 3), $a); 
+}
+
+$color-desaturated-red: 0, 36%, 70%;
+$color-soft-red: 0, 93%, 68%;
+$color-dark-grayish-red: 0, 6%, 24%;
 
 $gradient-light: 135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%);
 $gradient-dark: 135deg, hsl(0, 80%, 86%), hsl(0,  74%, 74%);
@@ -8,28 +15,39 @@ $gradient-dark: 135deg, hsl(0, 80%, 86%), hsl(0,  74%, 74%);
 $font-size: 16px;
 $font-sans-serif: 'Josefin Sans', sans-serif;
 
+$margin-x: 1.5rem;
+
+@mixin base-font {
+    font-size: $font-size;
+    font-family: $font-sans-serif;
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-body {
-    font-family: $font-sans-serif;
+root {
     font-size: $font-size;
+}
+
+body {
+    @include base-font;
     background-image: linear-gradient($gradient-light);
 }
 
 .navbar {
     &__logo {
-        width: 100px;
+        width: math.div(100, 375) * 100%;
         height: auto;
-        margin: 2rem;
+        margin: 2rem $margin-x;
     }
 }
 
 .hero {
     &__img {
+        display: block;
         width: 100%;
         height: auto;
     }
@@ -37,10 +55,10 @@ body {
 
 .main {
     text-align: center;
-    margin: 3rem 1.5rem;
+    margin: 3rem $margin-x;
 
     &__title {
-        color: $color-dark-grayish-red;
+        color: fHSL($color-dark-grayish-red);
         text-transform: uppercase;
         font-size: 3rem;
         font-weight: 600;
@@ -48,12 +66,12 @@ body {
 
         &--accent {
             font-weight: 300;
-            color: $color-desaturated-red;
+            color: fHSL($color-desaturated-red);
         }
     }
 
     &__text {
-        color: $color-desaturated-red;
+        color: fHSL($color-desaturated-red);
         font-weight: 300;
         margin: 1.5rem 0;
         line-height: 1.5rem;
@@ -66,40 +84,87 @@ body {
     &__email {
         background-color: transparent;
         padding: 1rem;
-        border: 1px solid hsla(0, 6%, 24%, 0.1);
+        border: 1px solid fHSL($color-dark-grayish-red, 0.1);
         border-radius: 30px;
         width: 100%;
-        color: $color-dark-grayish-red;
+        color: fHSL($color-dark-grayish-red);
 
         &::placeholder {
-            color: $color-desaturated-red;
-            font-family: $font-sans-serif;
-            opacity: 25%;
-            font-size: 1rem;
+            @include base-font;
+            color: fHSL($color-desaturated-red, 0.25);
+        }
+
+        &:focus-visible {
+            outline: none;
         }
     }
 
     &__button {
-        color: white;
-        border: 1px solid transparent;
-        background-image: linear-gradient($gradient-dark);
-        border: 1px solid transparent;
-        border-radius: 30px;
         position: absolute;
         right: 0;
         height: 100%;
         width: 20%;
+        border: 1px solid transparent;
+        color: white;
+        background-image: linear-gradient($gradient-dark);
+        border-radius: 30px;
+        box-shadow: fHSL($color-desaturated-red, 0.4) 0px 7px 29px 0px;    
     }
+
 }
 
 footer {
-    margin: 2rem;
+    margin: 2rem $margin-x;
     .attribution {
         font-size: 11px;
         text-align: center;
-        color: $color-dark-grayish-red;
+        color: fHSL($color-dark-grayish-red);
         a {
-            color: $color-desaturated-red;
+            color: fHSL($color-desaturated-red);
           }
       }
+}
+@media (min-width: 1000px) {
+    body {
+        display: grid;
+        grid-template: 100px auto 100px / auto 40% auto 40%;
+        background: url('../images/bg-pattern-desktop.svg')
+    }
+
+    .navbar {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    .hero {
+        grid-column: 4 / 5;
+        grid-row: 1 / 4;
+        
+        &__img {
+            max-height: 100vh;
+        }
+    }
+
+    .main {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        text-align: left;
+        justify-items: center;
+        width: 70%;
+
+        margin-top: 8rem;
+
+        &__title {
+            font-size: 4rem;
+            font-weight: 400;
+        }
+    }
+
+    footer {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+        .attribution {
+            text-align: left;
+        }
+    }
 }
